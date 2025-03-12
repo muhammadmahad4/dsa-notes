@@ -212,3 +212,184 @@ int main() {
 ---
 
 Let me know if you need further clarification or examples! 😊
+
+
+Absolutely! Here’s a clean and organized format for your Word document notes on **Stacks in C++**. You can copy and paste this directly into your document.
+
+---
+
+# **Stacks in C++**
+
+---
+
+## **1. Introduction**
+- A **stack** is a **Last-In-First-Out (LIFO)** data structure.
+- Elements are added and removed from the **top** of the stack.
+- C++ provides a built-in stack library in the **Standard Template Library (STL)**.
+
+---
+
+## **2. Including the Stack Library**
+To use stacks in C++, include the `<stack>` header:
+```cpp
+#include <stack>
+```
+
+---
+
+## **3. Declaring a Stack**
+- Use the `std::stack` template class.
+- Syntax:
+```cpp
+std::stack<data_type> stack_name;
+```
+- Example:
+```cpp
+std::stack<int> myStack; // Declares a stack of integers
+```
+
+---
+
+## **4. Common Stack Operations**
+
+### **a. Push (Insert Element)**
+- Adds an element to the top of the stack.
+- Syntax:
+```cpp
+stack_name.push(value);
+```
+- Example:
+```cpp
+myStack.push(10); // Adds 10 to the stack
+myStack.push(20); // Adds 20 to the stack
+```
+
+---
+
+### **b. Pop (Remove Top Element)**
+- Removes the top element from the stack.
+- Syntax:
+```cpp
+stack_name.pop();
+```
+- Example:
+```cpp
+myStack.pop(); // Removes the top element (20)
+```
+
+---
+
+### **c. Top (Access Top Element)**
+- Returns the top element of the stack.
+- Syntax:
+```cpp
+stack_name.top();
+```
+- Example:
+```cpp
+int topElement = myStack.top(); // Returns 10
+```
+
+---
+
+### **d. Check if Stack is Empty**
+- Returns `true` if the stack is empty, otherwise `false`.
+- Syntax:
+```cpp
+stack_name.empty();
+```
+- Example:
+```cpp
+if (myStack.empty()) {
+    cout << "Stack is empty!" << endl;
+}
+```
+
+---
+
+### **e. Get Size of Stack**
+- Returns the number of elements in the stack.
+- Syntax:
+```cpp
+stack_name.size();
+```
+- Example:
+```cpp
+int size = myStack.size(); // Returns 1
+```
+
+---
+
+## **5. Example Code**
+```cpp
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> myStack;
+
+    // Push elements
+    myStack.push(10);
+    myStack.push(20);
+    myStack.push(30);
+
+    // Access top element
+    cout << "Top element: " << myStack.top() << endl; // Output: 30
+
+    // Pop element
+    myStack.pop(); // Removes 30
+    cout << "Top element after pop: " << myStack.top() << endl; // Output: 20
+
+    // Check size
+    cout << "Stack size: " << myStack.size() << endl; // Output: 2
+
+    // Check if empty
+    if (!myStack.empty()) {
+        cout << "Stack is not empty!" << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## **6. Time Complexities**
+| **Operation** | **Time Complexity** |
+|---------------|---------------------|
+| Push          | O(1)                |
+| Pop           | O(1)                |
+| Top           | O(1)                |
+| Empty         | O(1)                |
+| Size          | O(1)                |
+
+---
+
+## **7. Underlying Container**
+- By default, `std::stack` uses `std::deque` as its underlying container.
+- You can change it to other containers like `std::vector` or `std::list`:
+```cpp
+std::stack<int, std::vector<int>> myStack; // Uses vector as the underlying container
+```
+
+---
+
+## **8. Applications of Stacks**
+- Reversing a sequence.
+- Implementing backtracking algorithms.
+- Parsing expressions (e.g., infix to postfix conversion).
+- Undo/Redo functionality in text editors.
+- Function call stack in recursion.
+
+---
+
+## **9. Key Points to Remember**
+- Stacks follow the **LIFO** principle.
+- Use `push()` to add elements and `pop()` to remove elements.
+- Always check if the stack is empty before calling `top()` or `pop()` to avoid runtime errors.
+- `std::stack` is a **container adapter**, meaning it uses an underlying container (like `std::deque` or `std::vector`).
+
+---
+
+This format is clean, organized, and easy to read. You can customize it further if needed. Let me know if you’d like me to add more details or examples! 😊
