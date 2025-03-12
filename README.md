@@ -393,3 +393,213 @@ std::stack<int, std::vector<int>> myStack; // Uses vector as the underlying cont
 ---
 
 This format is clean, organized, and easy to read. You can customize it further if needed. Let me know if you’d like me to add more details or examples! 😊
+
+
+
+Yes, C++ provides a **linked list** implementation in the **Standard Template Library (STL)** through the `std::list` class. It is a **doubly linked list**, meaning each element has pointers to both the previous and next elements.
+
+---
+
+## **1. Including the List Library**
+To use linked lists, include the `<list>` header:
+```cpp
+#include <list>
+```
+
+---
+
+## **2. Declaring a Linked List**
+- Syntax:
+  ```cpp
+  std::list<data_type> list_name;
+  ```
+- Example:
+  ```cpp
+  std::list<int> myList; // Declares an empty linked list of integers
+  ```
+
+---
+
+## **3. Common Linked List Functions and Methods**
+
+### **a. Initialization**
+- **Empty List**:
+  ```cpp
+  std::list<int> l1; // Empty list
+  ```
+- **List with Initializer List**:
+  ```cpp
+  std::list<int> l2 = {1, 2, 3, 4, 5}; // List initialized with values
+  ```
+
+---
+
+### **b. Adding Elements**
+- **`push_back()`**: Adds an element to the end of the list.
+  ```cpp
+  l1.push_back(10); // Adds 10 to the end of the list
+  ```
+- **`push_front()`**: Adds an element to the beginning of the list.
+  ```cpp
+  l1.push_front(5); // Adds 5 to the beginning of the list
+  ```
+- **`insert()`**: Inserts an element at a specific position.
+  ```cpp
+  auto it = l1.begin();
+  advance(it, 2); // Move iterator to index 2
+  l1.insert(it, 20); // Inserts 20 at index 2
+  ```
+
+---
+
+### **c. Accessing Elements**
+- **`front()`**: Accesses the first element.
+  ```cpp
+  int first = l1.front(); // Accesses the first element
+  ```
+- **`back()`**: Accesses the last element.
+  ```cpp
+  int last = l1.back(); // Accesses the last element
+  ```
+
+---
+
+### **d. Removing Elements**
+- **`pop_back()`**: Removes the last element.
+  ```cpp
+  l1.pop_back(); // Removes the last element
+  ```
+- **`pop_front()`**: Removes the first element.
+  ```cpp
+  l1.pop_front(); // Removes the first element
+  ```
+- **`erase()`**: Removes an element at a specific position or range.
+  ```cpp
+  auto it = l1.begin();
+  advance(it, 2); // Move iterator to index 2
+  l1.erase(it); // Removes element at index 2
+  ```
+- **`remove()`**: Removes all elements with a specific value.
+  ```cpp
+  l1.remove(10); // Removes all elements with value 10
+  ```
+- **`clear()`**: Removes all elements.
+  ```cpp
+  l1.clear(); // Clears the list
+  ```
+
+---
+
+### **e. Size and Capacity**
+- **`size()`**: Returns the number of elements in the list.
+  ```cpp
+  int size = l1.size(); // Returns the size of the list
+  ```
+- **`empty()`**: Checks if the list is empty.
+  ```cpp
+  if (l1.empty()) {
+      cout << "List is empty!" << endl;
+  }
+  ```
+
+---
+
+### **f. Iterators**
+- **`begin()`**: Returns an iterator to the first element.
+  ```cpp
+  auto it = l1.begin(); // Iterator to the first element
+  ```
+- **`end()`**: Returns an iterator to the end (one past the last element).
+  ```cpp
+  auto it = l1.end(); // Iterator to the end
+  ```
+- **`rbegin()`**: Returns a reverse iterator to the last element.
+  ```cpp
+  auto rit = l1.rbegin(); // Reverse iterator to the last element
+  ```
+- **`rend()`**: Returns a reverse iterator to the beginning (one before the first element).
+  ```cpp
+  auto rit = l1.rend(); // Reverse iterator to the beginning
+  ```
+
+---
+
+### **g. Other Useful Functions**
+- **`sort()`**: Sorts the list.
+  ```cpp
+  l1.sort(); // Sorts the list in ascending order
+  ```
+- **`reverse()`**: Reverses the list.
+  ```cpp
+  l1.reverse(); // Reverses the list
+  ```
+- **`merge()`**: Merges two sorted lists.
+  ```cpp
+  std::list<int> l2 = {6, 7, 8};
+  l1.merge(l2); // Merges l2 into l1
+  ```
+- **`unique()`**: Removes duplicate consecutive elements.
+  ```cpp
+  l1.unique(); // Removes duplicates
+  ```
+
+---
+
+## **4. Example Code**
+```cpp
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    // Declare and initialize a list
+    list<int> l = {1, 2, 3, 4, 5};
+
+    // Add elements
+    l.push_back(6);
+    l.push_front(0);
+
+    // Access elements
+    cout << "First element: " << l.front() << endl;
+    cout << "Last element: " << l.back() << endl;
+
+    // Remove elements
+    l.pop_back(); // Removes the last element
+    l.pop_front(); // Removes the first element
+
+    // Insert element
+    auto it = l.begin();
+    advance(it, 2); // Move iterator to index 2
+    l.insert(it, 20); // Inserts 20 at index 2
+
+    // Print all elements
+    cout << "List elements: ";
+    for (int i : l) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    // Sort the list
+    l.sort();
+    cout << "Sorted list: ";
+    for (int i : l) {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+```
+
+---
+
+## **5. Key Points to Remember**
+- `std::list` is a **doubly linked list**.
+- Use `push_back()` and `push_front()` to add elements.
+- Use `pop_back()` and `pop_front()` to remove elements.
+- Use iterators to traverse the list.
+- Use `sort()` and `reverse()` for sorting and reversing the list.
+
+---
+
+Let me know if you need further clarification or examples! 😊
