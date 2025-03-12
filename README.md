@@ -603,3 +603,210 @@ int main() {
 ---
 
 Let me know if you need further clarification or examples! 😊
+
+
+The **`std::map`** in C++ is a powerful container from the **Standard Template Library (STL)** that stores elements as **key-value pairs**. It is implemented as a **balanced binary search tree** (usually a Red-Black Tree), so elements are always sorted by their keys.
+
+---
+
+## **1. Including the Map Library**
+To use `std::map`, include the `<map>` header:
+```cpp
+#include <map>
+```
+
+---
+
+## **2. Declaring a Map**
+- Syntax:
+  ```cpp
+  std::map<key_type, value_type> map_name;
+  ```
+- Example:
+  ```cpp
+  std::map<string, int> myMap; // Declares a map with string keys and integer values
+  ```
+
+---
+
+## **3. Common Map Methods and Functions**
+
+### **a. Inserting Elements**
+- **`insert()`**: Inserts a key-value pair into the map.
+  ```cpp
+  myMap.insert({"apple", 10});
+  myMap.insert(make_pair("banana", 20));
+  ```
+- **`operator[]`**: Inserts or updates a key-value pair.
+  ```cpp
+  myMap["cherry"] = 30; // Inserts or updates the value for key "cherry"
+  ```
+
+---
+
+### **b. Accessing Elements**
+- **`operator[]`**: Accesses the value associated with a key. If the key doesn't exist, it inserts the key with a default value.
+  ```cpp
+  int value = myMap["apple"]; // Accesses the value for key "apple"
+  ```
+- **`at()`**: Accesses the value associated with a key. Throws an exception if the key doesn't exist.
+  ```cpp
+  int value = myMap.at("banana"); // Accesses the value for key "banana"
+  ```
+
+---
+
+### **c. Checking for Existence**
+- **`find()`**: Returns an iterator to the key-value pair if the key exists, otherwise returns `end()`.
+  ```cpp
+  auto it = myMap.find("cherry");
+  if (it != myMap.end()) {
+      cout << "Key found! Value: " << it->second << endl;
+  } else {
+      cout << "Key not found!" << endl;
+  }
+  ```
+
+---
+
+### **d. Removing Elements**
+- **`erase()`**: Removes a key-value pair by key or iterator.
+  ```cpp
+  myMap.erase("apple"); // Removes the key "apple"
+  auto it = myMap.find("banana");
+  if (it != myMap.end()) {
+      myMap.erase(it); // Removes the key-value pair using an iterator
+  }
+  ```
+- **`clear()`**: Removes all elements from the map.
+  ```cpp
+  myMap.clear(); // Clears the map
+  ```
+
+---
+
+### **e. Size and Capacity**
+- **`size()`**: Returns the number of key-value pairs in the map.
+  ```cpp
+  int size = myMap.size(); // Returns the size of the map
+  ```
+- **`empty()`**: Checks if the map is empty.
+  ```cpp
+  if (myMap.empty()) {
+      cout << "Map is empty!" << endl;
+  }
+  ```
+
+---
+
+### **f. Iterating Over a Map**
+- Use iterators to traverse the map.
+  ```cpp
+  for (auto it = myMap.begin(); it != myMap.end(); it++) {
+      cout << it->first << ": " << it->second << endl;
+  }
+  ```
+- Use range-based for loops (C++11 and later):
+  ```cpp
+  for (auto& pair : myMap) {
+      cout << pair.first << ": " << pair.second << endl;
+  }
+  ```
+
+---
+
+### **g. Other Useful Functions**
+- **`count()`**: Returns the number of elements with a specific key (0 or 1 for `std::map`).
+  ```cpp
+  if (myMap.count("cherry")) {
+      cout << "Key exists!" << endl;
+  }
+  ```
+- **`lower_bound()`**: Returns an iterator to the first element with a key **not less than** the given key.
+  ```cpp
+  auto it = myMap.lower_bound("banana");
+  if (it != myMap.end()) {
+      cout << "Lower bound: " << it->first << ": " << it->second << endl;
+  }
+  ```
+- **`upper_bound()`**: Returns an iterator to the first element with a key **greater than** the given key.
+  ```cpp
+  auto it = myMap.upper_bound("banana");
+  if (it != myMap.end()) {
+      cout << "Upper bound: " << it->first << ": " << it->second << endl;
+  }
+  ```
+
+---
+
+## **4. Example Code**
+
+```cpp
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    // Declare a map
+    map<string, int> myMap;
+
+    // Insert elements
+    myMap.insert({"apple", 10});
+    myMap.insert(make_pair("banana", 20));
+    myMap["cherry"] = 30;
+
+    // Access elements
+    cout << "Value of apple: " << myMap["apple"] << endl;
+    cout << "Value of banana: " << myMap.at("banana") << endl;
+
+    // Check if a key exists
+    if (myMap.find("cherry") != myMap.end()) {
+        cout << "Cherry found!" << endl;
+    }
+
+    // Iterate over the map
+    cout << "Map contents:" << endl;
+    for (auto& pair : myMap) {
+        cout << pair.first << ": " << pair.second << endl;
+    }
+
+    // Remove an element
+    myMap.erase("banana");
+
+    // Check size
+    cout << "Size of map: " << myMap.size() << endl;
+
+    // Clear the map
+    myMap.clear();
+    cout << "Map is empty: " << (myMap.empty() ? "Yes" : "No") << endl;
+
+    return 0;
+}
+```
+
+---
+
+## **5. Output**
+For the example above, the output will be:
+```
+Value of apple: 10
+Value of banana: 20
+Cherry found!
+Map contents:
+apple: 10
+banana: 20
+cherry: 30
+Size of map: 2
+Map is empty: Yes
+```
+
+---
+
+## **6. Key Points**
+- `std::map` stores elements as **key-value pairs**.
+- Keys are **unique** and sorted in ascending order by default.
+- Use `insert()` or `operator[]` to add elements.
+- Use `find()` to check if a key exists.
+- Use iterators or range-based loops to traverse the map.
+
+Let me know if you need further clarification or examples! 😊
