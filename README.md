@@ -810,3 +810,184 @@ Map is empty: Yes
 - Use iterators or range-based loops to traverse the map.
 
 Let me know if you need further clarification or examples! 😊
+
+The **`std::deque`** (double-ended queue) in C++ is a sequence container from the **Standard Template Library (STL)**. It allows efficient insertion and deletion at both the beginning and the end of the container. Unlike `std::vector`, `std::deque` does not store elements in contiguous memory, but it provides **random access** to elements.
+
+---
+
+## **1. Including the Deque Library**
+To use `std::deque`, include the `<deque>` header:
+```cpp
+#include <deque>
+```
+
+---
+
+## **2. Declaring a Deque**
+- Syntax:
+  ```cpp
+  std::deque<data_type> deque_name;
+  ```
+- Example:
+  ```cpp
+  std::deque<int> myDeque; // Declares a deque of integers
+  ```
+
+---
+
+## **3. Common Deque Methods and Functions**
+
+### **a. Adding Elements**
+- **`push_back()`**: Adds an element to the end of the deque.
+  ```cpp
+  myDeque.push_back(10); // Adds 10 to the end
+  ```
+- **`push_front()`**: Adds an element to the beginning of the deque.
+  ```cpp
+  myDeque.push_front(5); // Adds 5 to the beginning
+  ```
+- **`insert()`**: Inserts an element at a specific position.
+  ```cpp
+  myDeque.insert(myDeque.begin() + 2, 20); // Inserts 20 at index 2
+  ```
+
+---
+
+### **b. Removing Elements**
+- **`pop_back()`**: Removes the last element from the deque.
+  ```cpp
+  myDeque.pop_back(); // Removes the last element
+  ```
+- **`pop_front()`**: Removes the first element from the deque.
+  ```cpp
+  myDeque.pop_front(); // Removes the first element
+  ```
+- **`erase()`**: Removes an element at a specific position or range.
+  ```cpp
+  myDeque.erase(myDeque.begin() + 1); // Removes the element at index 1
+  ```
+- **`clear()`**: Removes all elements from the deque.
+  ```cpp
+  myDeque.clear(); // Clears the deque
+  ```
+
+---
+
+### **c. Accessing Elements**
+- **`operator[]`**: Accesses an element at a specific index (no bounds checking).
+  ```cpp
+  int element = myDeque[2]; // Accesses the element at index 2
+  ```
+- **`at()`**: Accesses an element at a specific index (with bounds checking).
+  ```cpp
+  int element = myDeque.at(2); // Accesses the element at index 2
+  ```
+- **`front()`**: Accesses the first element.
+  ```cpp
+  int firstElement = myDeque.front(); // Accesses the first element
+  ```
+- **`back()`**: Accesses the last element.
+  ```cpp
+  int lastElement = myDeque.back(); // Accesses the last element
+  ```
+
+---
+
+### **d. Size and Capacity**
+- **`size()`**: Returns the number of elements in the deque.
+  ```cpp
+  int size = myDeque.size(); // Returns the size of the deque
+  ```
+- **`empty()`**: Checks if the deque is empty.
+  ```cpp
+  if (myDeque.empty()) {
+      cout << "Deque is empty!" << endl;
+  }
+  ```
+
+---
+
+### **e. Iterators**
+- **`begin()`**: Returns an iterator to the first element.
+  ```cpp
+  auto it = myDeque.begin(); // Iterator to the first element
+  ```
+- **`end()`**: Returns an iterator to the end (one past the last element).
+  ```cpp
+  auto it = myDeque.end(); // Iterator to the end
+  ```
+- **`rbegin()`**: Returns a reverse iterator to the last element.
+  ```cpp
+  auto rit = myDeque.rbegin(); // Reverse iterator to the last element
+  ```
+- **`rend()`**: Returns a reverse iterator to the beginning (one before the first element).
+  ```cpp
+  auto rit = myDeque.rend(); // Reverse iterator to the beginning
+  ```
+
+---
+
+### **f. Other Useful Functions**
+- **`swap()`**: Swaps the contents of two deques.
+  ```cpp
+  std::deque<int> anotherDeque = {1, 2, 3};
+  myDeque.swap(anotherDeque); // Swaps myDeque and anotherDeque
+  ```
+
+---
+
+## **4. Example Code**
+
+```cpp
+#include <iostream>
+#include <deque>
+using namespace std;
+
+int main() {
+    deque<int> myDeque;
+
+    // Add elements to the deque
+    myDeque.push_back(10);
+    myDeque.push_back(20);
+    myDeque.push_front(5);
+
+    // Access elements
+    cout << "Front element: " << myDeque.front() << endl; // Output: 5
+    cout << "Back element: " << myDeque.back() << endl;   // Output: 20
+
+    // Access element at index 1
+    cout << "Element at index 1: " << myDeque[1] << endl; // Output: 10
+
+    // Remove elements
+    myDeque.pop_front(); // Removes the first element (5)
+    myDeque.pop_back();  // Removes the last element (20)
+
+    // Print all elements
+    cout << "Deque elements: ";
+    for (int num : myDeque) {
+        cout << num << " "; // Output: 10
+    }
+    cout << endl;
+
+    // Check size and empty status
+    cout << "Deque size: " << myDeque.size() << endl; // Output: 1
+    if (!myDeque.empty()) {
+        cout << "Deque is not empty!" << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+## **5. Key Points**
+- `std::deque` allows efficient insertion and deletion at both ends.
+- It provides **random access** to elements using `operator[]` or `at()`.
+- Use `push_back()` and `push_front()` to add elements.
+- Use `pop_back()` and `pop_front()` to remove elements.
+- Use iterators to traverse the deque.
+
+---
+
+Let me know if you need further clarification or examples! 😊
